@@ -1,6 +1,6 @@
 let arrayofDiv = [];
 let container = document.querySelector(".container");
-let btnStart = document.querySelector("#btnStart");
+let btnRandomize = document.querySelector("#btnStart");
 let height = 50;
 let counter = 0;
 
@@ -19,10 +19,12 @@ arrayofDiv.forEach(element => {
     height += 50;
 });
 
-btnStart.addEventListener("click", event =>{
+btnRandomize.addEventListener("click", event =>{
     let array = arrayofDiv;
     let randomArray = getRandomIntArray();
     let counter = 0;
+    console.log(randomArray);
+    
     let forEverySecond = window.setInterval(() => {
         let temp = array[counter];
         array[counter] = array[randomArray[counter]];
@@ -33,7 +35,6 @@ btnStart.addEventListener("click", event =>{
             clearInterval(forEverySecond);
         }
     } ,500);
-    console.log(getRandomIntArray());
 });
 
 function setDiv(array) {
@@ -43,22 +44,19 @@ function setDiv(array) {
 }
 
 function getRandomIntArray() {
-    let randomArray = [9,8,7,6,5,4,3,2,1,0];
-    // for (let j = 0; j < randomArray.length; j++) {
-    //     let int = getRandomInt(10);
-    //     for (let index = j; index < 10; index++) {
-    //         if (int == randomArray[index]) {
-    //             break;
-    //         } else {
-    //             randomArray[index] = int;
-    //             break;
-    //         }       
-    //     }
-    // }
+    let randomArray = [];
+    do{
+        let i = getRandomInt(10);
+        if (!randomArray.includes(i)) {
+            randomArray.push(i);
+        }
+    }while(randomArray.length < 10)
     return randomArray;
 }
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
-//console.log(arrayofDiv);
+function bubbleSort(params) {
+    
+}
